@@ -1,0 +1,53 @@
+# Authorization
+
+## Authentication method
+
+The API uses Bearer authentication with JWT access tokens for protected operations.
+
+## Authorization header
+
+Send the access token in the following format:
+
+```http
+Authorization: Bearer YOUR_ACCESS_TOKEN
+```
+
+## SDK example
+
+```typescript
+import { apiClient, setAccessToken } from "./src/client";
+
+setAccessToken("YOUR_ACCESS_TOKEN");
+
+const { data, error } = await apiClient.GET("/projects");
+
+if (error) {
+  console.error(error);
+} else {
+  console.log(data);
+}
+```
+
+## Public endpoints
+
+The following endpoints are public according to the OpenAPI specification:
+
+- `GET /projects`
+- `GET /projects/{projectId}`
+- `GET /tasks`
+- `GET /tasks/{taskId}`
+
+## Protected endpoints
+
+The following endpoints require Bearer authentication according to the OpenAPI specification:
+
+- `POST /projects`
+- `PUT /projects/{projectId}`
+- `DELETE /projects/{projectId}`
+- `POST /tasks`
+- `PUT /tasks/{taskId}`
+- `DELETE /tasks/{taskId}`
+
+## Important
+
+This documentation describes the API contract. The backend must implement JWT validation and authorization to enforce these security rules.

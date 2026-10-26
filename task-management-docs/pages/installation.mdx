@@ -1,0 +1,52 @@
+# Installation
+
+## Requirements
+
+To use the Task Management API SDK, install:
+
+- Node.js
+- npm
+- TypeScript (for TypeScript projects)
+
+## Install dependencies
+
+Install the API client dependency:
+
+```bash
+npm install openapi-fetch
+```
+
+Install the TypeScript type generator as a development dependency:
+
+```bash
+npm install --save-dev openapi-typescript
+```
+
+## Generate API types
+
+Make sure the OpenAPI specification is available at `api/openapi.yaml`. Generate TypeScript definitions with:
+
+```bash
+npx openapi-typescript api/openapi.yaml -o sdk/generated/schema.d.ts
+```
+
+This command generates TypeScript types from the API specification.
+
+## Use the SDK
+
+Import the generated schema and create an API client using `openapi-fetch`:
+
+```typescript
+import createClient from "openapi-fetch";
+import type { paths } from "./sdk/generated/schema";
+
+const apiClient = createClient<paths>({
+  baseUrl: "http://localhost:3000",
+});
+```
+
+Replace the example URL with the actual base URL of your API server.
+
+## Verify the installation
+
+Run the type-generation command and check that `sdk/generated/schema.d.ts` exists. The generated definitions describe available endpoints, parameters, request bodies, and responses.
