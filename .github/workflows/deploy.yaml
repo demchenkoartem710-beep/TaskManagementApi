@@ -32,7 +32,7 @@ jobs:
 
       - name: Install dependencies
         working-directory: task-management-docs
-        run: npm ci
+        run: npm install
 
       - name: Build Zudoku
         working-directory: task-management-docs
