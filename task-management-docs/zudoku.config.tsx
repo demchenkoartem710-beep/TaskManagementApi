@@ -1,3 +1,4 @@
+
 import type { ZudokuConfig } from "zudoku";
 
 const config: ZudokuConfig = {
@@ -48,6 +49,12 @@ const config: ZudokuConfig = {
           file: "about",
           path: "/about",
           label: "About",
+        },
+        {
+          type: "doc",
+          file: "technical-specification",
+          path: "/technical-specification",
+          label: "Технічне завдання",
         },
       ],
     },
